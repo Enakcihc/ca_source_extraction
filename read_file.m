@@ -30,13 +30,13 @@ if strcmpi(ext,'.tiff') || strcmpi(ext,'.tif');
     nd = ndims(Y1);
     if nd == 2
         imData(:,:,1) = Y1;   
-        for t = sframe+1:sframe+num2read-1
-            imData(:,:,t) = imread(path_to_file,'Index',t,'Info',tiffInfo);
+        for t = 2:num2read;%sframe+1:sframe+num2read-1
+            imData(:,:,t) = imread(path_to_file,'Index',sframe+t-1,'Info',tiffInfo);
         end
     elseif nd == 3
         imData(:,:,:,1) = Y1;   
-        for t = sframe+1:sframe+num2read-1
-            imData(:,:,:,t) = imread(path_to_file,'Index',t,'Info',tiffInfo);
+        for t = 2:num2read;%sframe+1:sframe+num2read-1
+            imData(:,:,:,t) = imread(path_to_file,'Index',sframe+t-1,'Info',tiffInfo);
         end        
     end
     
